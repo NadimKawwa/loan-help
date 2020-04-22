@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 #load models at top of app to load into memory only one time
-with open('model/clf.pkl', 'rb') as f:
+with open('model/xgb_cv_compact.pkl', 'rb') as f:
     clf = pickle.load(f)
           
 with open('model/knn_regression.pkl', 'rb') as f:
