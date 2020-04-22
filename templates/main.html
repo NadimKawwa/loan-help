@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 75%;
+}
+
+.result {
+    margin: auto;
+    width: 50%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>Lend Help: Preliminary Loan Approval Help</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        ZipCode:
+        <input name="code" type="number" required min="1" max="99" value="94">
+        <br>
+        <br> FICO:
+        <input name="fico" type="number" min="600" max="850" value="750" required>
+        <br>
+        <br> Loan Amount:
+        <input name="loan_amnt" type="number" min="500" max="40000" value="500" required>
+        <br>
+        <br> Term (36 or 60) :
+        <input name="term"  list="terms" required>
+        <datalist id="terms">
+        <option value="36">
+        <option value="60">
+            </datalist>
+        <br>
+        <br> Debt to Income (0 to 100):
+        <input name="dti" type="number" min="0" max="40" value="20" required>
+        <br>
+        <br> Home Ownership:
+        <input name="home_ownership" list ="homes"  required>
+        <datalist id="homes">
+        <option value="MORTGAGE">
+        <option value="RENT">
+        <option value="OWN">
+        <option value="ANY">
+        <option value="OTHER">
+        <option value="NONE">
+            </datalist>
+        <br>
+        <br> Number of Mortgage Accounts:s
+        <input name="mort_acc" type="number" value="0" min="0" required>
+        <br>
+        <br> Annual Income:
+        <input name="annual_inc" type="number" min="0" value ="50000" required>
+        <br>
+        <br> Number of Open Accounts:
+        <input name="open_acc" type="number" min="0" value="1" required>
+        <br>
+        <br> The total number of credit lines:
+        <input name="total_acc" type="number" min="0" value="1" required>
+        <br>
+        <br> Time since first credit line (years):
+        <input name="time_delta" type="number" min="0" value="1" required>
+        <br>
+        <br> Verification Status(0=unverified, 1=verified, 2=confirmed by 3rd party):
+        <input name="verification_status"  list ="verf_list" required>
+        <datalist id="verf_list">
+        <option value="0">
+        <option value="1">
+        <option value="2">
+            </datalist>
+        <br>
+        <br> Revolving Balance:
+        <input name="revol_bal" type="number" min="0" value="0" required>
+        <br>
+        <br> Revolving Utilization:
+        <input name="revol_util" type="number" value="10" min="0" max="110" required>
+        <br>
+        <br> Number of degratory public records:
+        <input name="pub_rec" type="number" min="0" max="4" value="0" required>
+        <br>
+        <br> Number of publicly recorded bankruptcies:
+        <input name="pub_rec_bankruptcies" type="number" min="0" max="2" value="0" required>
+        <br>
+        <br> Employment Length (years):
+        <input name="emp_length" type="number" min="0" value="5" required>
+        <br>
+        <br> Application type (0 if alone and 1 if joint):
+        <input name="application_type" list="joints" required>
+        <datalist id="joints">
+        <option value="0">
+        <option value="1">
+            </datalist>
+        <br>
+        <br> Employment title:
+        <input name="emp_title" type="text" required>
+        <br>
+        <br> Purpose of Loan:
+        <input name="purpose" type="text" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+            <br><b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Loan Decision:
+        <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+    
+<address>
+Developped by <a href="https://github.com/NadimKawwa">Nadim Kawwa</a><br> 
+<a href="https://www.linkedin.com/in/nadimkawwa/">Connect on Linkedin</a><br> 
+<a href="https://medium.com/@nadimkawwa/d0eda750bed9?source=friends_link&sk=1e576d90d05870fb24578921c48de5aa">Read the Article on Medium</a><br>
+San Francisco, CA<br>
+USA
+</address>
+
+</html>
