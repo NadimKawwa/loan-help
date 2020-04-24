@@ -3,6 +3,14 @@
 ![Dollar Bill](https://cdn-images-1.medium.com/max/800/0*C1vM24QHhRynMy9U)
 
 The objective of this repository is to present a way to issue loan using techniques from data science and machine learning.
+This project is hosted on Heroku.com under a free tier. Feel free to play with it and see what you get!
+
+[Try the App on Heroku](https://loan-help.herokuapp.com/ "Loan Help App")
+
+
+## Repository Tree
+
+```bas
   .
   ├─ model
   ├─ notebooks
@@ -23,3 +31,9 @@ The objective of this repository is to present a way to issue loan using techniq
   ├─ app.py
   ├─ requirements.txt
   └─ runtime.txt
+```
+
+-
+-
+-
+
