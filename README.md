@@ -43,7 +43,8 @@ The majority of LC users have average to good credit rating, denoted by"sub_grad
 
 ![sub_grade distribution](https://github.com/NadimKawwa/loan-help/blob/master/notebooks/plots/sub_grade_count.png)
 
-We also note that the existing debt to income ratio (DTI) prior to issuing the loan is normally distributed along debtors who pay in full and those who default.
+We also note that the existing debt to income ratio (DTI) prior to issuing the loan is normally distributed along debtors who pay in full and those who default.<br>
+
 ![DTI Plot](https://github.com/NadimKawwa/loan-help/blob/master/notebooks/plots/hist_dti.png)
 
 ## Using the App
