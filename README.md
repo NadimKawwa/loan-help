@@ -8,9 +8,9 @@ This project is hosted on Heroku.com under a free tier. Feel free to play with i
 [Try the App on Heroku](https://loan-help.herokuapp.com/ "Loan Help App")
 
 
-## Repository Tree
+## Repository Organization
 
-```bas
+```bash
   .
   ├─ model
   ├─ notebooks
@@ -33,7 +33,22 @@ This project is hosted on Heroku.com under a free tier. Feel free to play with i
   └─ runtime.txt
 ```
 
--
--
--
+## Data Acquisition
+The data is based on Lending Club (LC) observations can be accessed for free on Kaggle:
+https://www.kaggle.com/wendykan/lending-club-loan-data
 
+## Analytics Overview 
+
+The majority of LC users have average to good credit rating, denoted by"sub_grade". A1 is the best grade possible and G5 is the woest possible. 
+
+![sub_grade distribution](https://github.com/NadimKawwa/loan-help/blob/master/notebooks/plots/sub_grade_count.png)
+
+We also note that the existing debt to income ratio (DTI) prior to issuing the loan is normally distributed along debtors who pay in full and those who default.
+![DTI Plot](https://github.com/NadimKawwa/loan-help/blob/master/notebooks/plots/hist_dti.png)
+
+## Using the App
+
+Using the app is rather easy. Simply input the required information, press submit, and get your results:
+![app input](https://cdn-images-1.medium.com/max/800/1*1NzIFLjy0GaBv1hM3zxwhw.png)
+
+![app_result](https://cdn-images-1.medium.com/max/800/1*b34KeqVu9oXDuvGiIDOsSQ.png)
