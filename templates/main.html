@@ -12,6 +12,12 @@ form {
     border: 1px solid #ccc;
 }
 </style>
+    
+<head>
+  <meta name="description" content="Loan Default Prediction">
+  <meta name="keywords" content="DataScience,HTML,Python">
+  <meta name="author" content="Nadim Kawwa">
+</head>
 
 <head>
     <title>Lend Help: Preliminary Loan Approval Help</title>
@@ -19,27 +25,27 @@ form {
 <form action="{{ url_for('main') }}" method="POST">
     <fieldset>
         <legend>Input values:</legend>
-        ZipCode:
+        First two digits of Zip code:<br>
         <input name="code" type="number" required min="1" max="99" value="94">
         <br>
-        <br> FICO:
-        <input name="fico" type="number" min="600" max="850" value="750" required>
+        <br> FICO score:<br>
+        <input name="fico" type="number" min="600" max="850" value="650" required>
         <br>
-        <br> Loan Amount:
+        <br> Loan Amount ($500 to $40,000):<br>
         <input name="loan_amnt" type="number" min="500" max="40000" value="500" required>
         <br>
-        <br> Term (36 or 60) :
-        <input name="term"  list="terms" required>
+        <br> Loan Term (36 or 60 months):<br>
+        <input name="term"  list="terms" required max="60" min="36">
         <datalist id="terms">
         <option value="36">
         <option value="60">
             </datalist>
         <br>
-        <br> Debt to Income (0 to 100):
+        <br> Current debt to income ratio (0 to 100):<br>
         <input name="dti" type="number" min="0" max="40" value="20" required>
         <br>
-        <br> Home Ownership:
-        <input name="home_ownership" list ="homes"  required>
+        <br> Home Ownership Status:<br>
+        <input name="home_ownership" list ="homes" required select>
         <datalist id="homes">
         <option value="MORTGAGE">
         <option value="RENT">
@@ -49,56 +55,56 @@ form {
         <option value="NONE">
             </datalist>
         <br>
-        <br> Number of Mortgage Accounts:s
-        <input name="mort_acc" type="number" value="0" min="0" required>
+        <br> Number of Mortgage Accounts:<br>
+        <input name="mort_acc" type="number" value="0" min="0" max="12" required>
         <br>
-        <br> Annual Income:
-        <input name="annual_inc" type="number" min="0" value ="50000" required>
+        <br> Annual Income:<br>
+        <input name="annual_inc" type="number" min="0" max="190000" value ="50000" required>
         <br>
-        <br> Number of Open Accounts:
+        <br> Number of open credit lines :<br>
         <input name="open_acc" type="number" min="0" value="1" required>
         <br>
-        <br> The total number of credit lines:
+        <br> Total number of credit lines currently in credit file:<br>
         <input name="total_acc" type="number" min="0" value="1" required>
         <br>
-        <br> Time since first credit line (years):
+        <br> Time since first credit line (years):<br>
         <input name="time_delta" type="number" min="0" value="1" required>
         <br>
-        <br> Verification Status(0=unverified, 1=verified, 2=confirmed by 3rd party):
-        <input name="verification_status"  list ="verf_list" required>
+        <br> Verification Status(0=unverified, 1=verified, 2=confirmed by 3rd party):<br>
+        <input name="verification_status"  list ="verf_list" required min="0" max="2" value="0">
         <datalist id="verf_list">
         <option value="0">
         <option value="1">
         <option value="2">
             </datalist>
         <br>
-        <br> Revolving Balance:
+        <br> Total credit revolving balance:<br>
         <input name="revol_bal" type="number" min="0" value="0" required>
         <br>
-        <br> Revolving Utilization:
+        <br> A mount of credit used relative to all available revolving credit:<br>
         <input name="revol_util" type="number" value="10" min="0" max="110" required>
         <br>
-        <br> Number of degratory public records:
+        <br> Number of degratory public records (minor offenses only):<br>
         <input name="pub_rec" type="number" min="0" max="4" value="0" required>
         <br>
-        <br> Number of publicly recorded bankruptcies:
+        <br> Number of publicly recorded bankruptcies:<br>
         <input name="pub_rec_bankruptcies" type="number" min="0" max="2" value="0" required>
         <br>
-        <br> Employment Length (years):
-        <input name="emp_length" type="number" min="0" value="5" required>
+        <br> Employment Length (years):<br>
+        <input name="emp_length" type="number" min="0" value="0" required>
         <br>
-        <br> Application type (0 if alone and 1 if joint):
+        <br> Application type (0 if alone and 1 if joint):<br>
         <input name="application_type" list="joints" required>
         <datalist id="joints">
         <option value="0">
         <option value="1">
             </datalist>
         <br>
-        <br> Employment title:
-        <input name="emp_title" type="text" required>
+        <br> Employment title:<br>
+        <input name="emp_title" type="text" value="working person" required>
         <br>
-        <br> Purpose of Loan:
-        <input name="purpose" type="text" required>
+        <br> Purpose of Loan:<br>
+        <input name="purpose" type="text" value="some loan" required>
         <br>
         <br>
         <input type="submit">
