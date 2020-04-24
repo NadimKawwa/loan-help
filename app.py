@@ -167,17 +167,23 @@ def main():
         #get interest rate
         apr_row = df_fico_apr[df_fico_apr['grade_num']==sub_grade]
         
+        
+        #use equal monthly installment formula
+        
         if term==36:
-            int_rate = apr_row['36_mo'].values[0]
-            installment = int(loan_amnt/36)
+            int_rate = apr_row['36_mo'].values[0]/100
+            emi = int_rate/36
+            installment = loan_amnt * (int_rate*(1+int_rate)**36) / ((1+int_rate)**36 - 1)
             term = 1
             
         else:
-            int_rate = apr_row['60_mo'].values[0]
-            installment = int(loan_amnt/60)
+            int_rate = apr_row['60_mo'].values[0]/100
+            emi = int_rate/60
+            installment = loan_amnt * (int_rate*(1+int_rate)**36) / ((1+int_rate)**36 - 1)
             term = 2
             
-            
+        #make integer
+        installment = int(installment)
             
             
         #create temporary dataframe for prediction
@@ -225,9 +231,10 @@ def main():
         output_dict= dict()
         output_dict['Annual Income'] = annual_inc
         output_dict['Self Reported FICO'] = fico
-        output_dict['Interest Rate'] = int_rate
+        output_dict['Interest Rate'] = int_rate * 100 #revert back to percentage
         output_dict['Installment']=installment
-        output_dict['Sub Grade']=sub_grade
+        output_dict['Number of Payments'] = 36 if term==1 else 60
+        output_dict['Sub Grade']= int(sub_grade)
         output_dict['Loan Amount']=loan_amnt
         
         #create deep copy 
